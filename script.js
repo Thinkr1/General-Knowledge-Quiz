@@ -17,6 +17,7 @@ let answered = false;
 let correct = false;
 
 function verifyAnswer() {
+  correct = false;
   if (answered) {
     return;
   }
