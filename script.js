@@ -14,6 +14,7 @@ let NQB;
 
 let tryCount = 0;
 let answered = false;
+let correct = false;
 
 function verifyAnswer() {
   if (answered) {
@@ -29,8 +30,9 @@ function verifyAnswer() {
     console.log("Correct!");
     showAlert("Correct!");
     NQB = createNQB();
-    NQB.style.backgroundColor = "#3fb541"; // greenish
+    NQB.style.backgroundColor = "#3FB541"; // greenish
     answered = true;
+    correct = true;
   } else {
     tryCount++;
     if (tryCount < 3) {
@@ -40,8 +42,9 @@ function verifyAnswer() {
       console.log("Incorrect! Showing correct answer.");
       showAlert(`Incorrect! The correct answer is: ${correctAnswer}.`);
       NQB = createNQB();
-      NQB.style.backgroundColor = "#b53f3f"; // reddish
+      NQB.style.backgroundColor = "#B53F3F"; // reddish
       answered = true;
+      correct = false;
       document.getElementById("ans").disabled = true;
       const panel = document.getElementById("panel");
       clearNQB(panel);
@@ -49,11 +52,11 @@ function verifyAnswer() {
     }
   }
 
-  if (!answered && tryCount === 3) {
+  if (!answered && tryCount === 3 || correct === true) {
     // If user has exceeded 3 tries, disable the answer input and show the "Next question" button
     document.getElementById("ans").disabled = true;
     NQB = createNQB();
-    NQB.style.backgroundColor = "#e65454"; // reddish
+    NQB.style.backgroundColor = correct ? "#3FB541" : "#E65454";
     const panel = document.getElementById("panel");
     clearNQB(panel);
     panel.appendChild(NQB);
