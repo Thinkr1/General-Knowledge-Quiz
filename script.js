@@ -54,7 +54,6 @@ function verifyAnswer() {
   }
 
   if (!answered && tryCount === 3 || correct === true) {
-    // If user has exceeded 3 tries, disable the answer input and show the "Next question" button
     document.getElementById("ans").disabled = true;
     NQB = createNQB();
     NQB.style.backgroundColor = correct ? "#3FB541" : "#E65454";
