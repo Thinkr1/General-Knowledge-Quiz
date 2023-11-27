@@ -20,12 +20,12 @@ function verifyAnswer() {
 
   if (userAnswer.toLowerCase() == correctAnswer.toLowerCase()) {
     console.log("Correct!");
-    showAlert("Correct");
+    showAlert("Correct!");
     nextQuestionButton = createNextQuestionButton();
     nextQuestionButton.style.backgroundColor = "#3fb541";
   } else {
     console.log("Incorrect!");
-    showAlert("Incorrect");
+    showAlert("Incorrect!");
     nextQuestionButton = createNextQuestionButton();
     nextQuestionButton.style.backgroundColor = "#b53f3f";
   }
@@ -96,7 +96,7 @@ function updateAnswerCounters(message) {
     correct: 0,
     incorrect: 0,
   };
-  if (message === "Correct") {
+  if (message === "Correct!") {
     userAnswers.correct++;
   } else {
     userAnswers.incorrect++;
