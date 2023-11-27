@@ -37,7 +37,8 @@ function verifyAnswer() {
 }
 
 function clearPreviousNextQuestionButton(parentElement) {
-  const previousNextQuestionButton = parentElement.querySelector("#nextQuestion");
+  const previousNextQuestionButton =
+    parentElement.querySelector("#nextQuestion");
   if (previousNextQuestionButton) {
     previousNextQuestionButton.remove();
   }
@@ -47,7 +48,7 @@ function createNextQuestionButton() {
   const nextQuestionButton = document.createElement("button");
   nextQuestionButton.textContent = "Next question";
   nextQuestionButton.id = "nextQuestion";
-  nextQuestionButton.onclick = function() {
+  nextQuestionButton.onclick = function () {
     showNewQuestion();
     clearPreviousNextQuestionButton(document.getElementById("panel"));
   };
@@ -58,7 +59,6 @@ function createNextQuestionButton() {
 //     document.getElementById("ans").value = "";
 //     showNewQuestion();
 //   }, 10000);
-
 
 function showNewQuestion() {
   fetch("./questions.json")
@@ -92,7 +92,10 @@ function showAlert(message) {
 
 function updateAnswerCounters(message) {
   const answerCountElement = document.getElementById("answerCount");
-  let userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || { correct: 0, incorrect: 0 };
+  let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {
+    correct: 0,
+    incorrect: 0,
+  };
   if (message === "Correct") {
     userAnswers.correct++;
   } else {
@@ -100,7 +103,7 @@ function updateAnswerCounters(message) {
   }
   const totalAnswerCount = userAnswers.correct + userAnswers.incorrect;
   answerCountElement.textContent = `${userAnswers.correct} correct and ${userAnswers.incorrect} wrong (${totalAnswerCount} total)`;
-  localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+  localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 }
 
 // document.addEventListener("click", function (e) {
