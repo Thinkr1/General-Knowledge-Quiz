@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   fetch("questions.json")
     .then((response) => response.json())
     .then((data) => {
@@ -38,7 +38,7 @@ function verifyAnswer() {
 
 function clearNQB(parentElement) {
   const previousNQB =
-    parentElement.querySelector("#nextQuestion");
+    parentElement.querySelector("#nQ");
   if (previousNQB) {
     previousNQB.remove();
   }
@@ -47,8 +47,8 @@ function clearNQB(parentElement) {
 function createNQB() {
   const NQB = document.createElement("button");
   NQB.textContent = "Next question";
-  NQB.id = "nextQuestion";
-  NQB.onclick = function () {
+  NQB.id = "nQ";
+  NQB.onclick = () => {
     showNQ();
     clearNQB(document.getElementById("panel"));
   };
