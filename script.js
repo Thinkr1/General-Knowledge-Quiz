@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-let nextQuestionButton;
+let NQB;
 
 function verifyAnswer() {
   const userAnswer = document.getElementById("ans").value;
@@ -21,46 +21,46 @@ function verifyAnswer() {
   if (userAnswer.toLowerCase() == correctAnswer.toLowerCase()) {
     console.log("Correct!");
     showAlert("Correct!");
-    nextQuestionButton = createNextQuestionButton();
-    nextQuestionButton.style.backgroundColor = "#3fb541";
+    NQB = createNQB();
+    NQB.style.backgroundColor = "#3fb541"; // greenish
   } else {
     console.log("Incorrect!");
     showAlert("Incorrect!");
-    nextQuestionButton = createNextQuestionButton();
-    nextQuestionButton.style.backgroundColor = "#b53f3f";
+    NQB = createNQB();
+    NQB.style.backgroundColor = "#b53f3f"; // reddish
   }
 
   const panel = document.getElementById("panel");
-  clearPreviousNextQuestionButton(panel);
-  panel.appendChild(nextQuestionButton);
+  clearNQB(panel);
+  panel.appendChild(NQB);
   document.getElementById("ans").value = "";
 }
 
-function clearPreviousNextQuestionButton(parentElement) {
-  const previousNextQuestionButton =
+function clearNQB(parentElement) {
+  const previousNQB =
     parentElement.querySelector("#nextQuestion");
-  if (previousNextQuestionButton) {
-    previousNextQuestionButton.remove();
+  if (previousNQB) {
+    previousNQB.remove();
   }
 }
 
-function createNextQuestionButton() {
-  const nextQuestionButton = document.createElement("button");
-  nextQuestionButton.textContent = "Next question";
-  nextQuestionButton.id = "nextQuestion";
-  nextQuestionButton.onclick = function () {
-    showNewQuestion();
-    clearPreviousNextQuestionButton(document.getElementById("panel"));
+function createNQB() {
+  const NQB = document.createElement("button");
+  NQB.textContent = "Next question";
+  NQB.id = "nextQuestion";
+  NQB.onclick = function () {
+    showNQ();
+    clearNQB(document.getElementById("panel"));
   };
-  return nextQuestionButton;
+  return NQB;
 }
 
 //   setTimeout(function () {
 //     document.getElementById("ans").value = "";
-//     showNewQuestion();
+//     showNQ();
 //   }, 10000);
 
-function showNewQuestion() {
+function showNQ() {
   fetch("./questions.json")
     .then((response) => response.json())
     .then((data) => {
@@ -80,12 +80,12 @@ function showAlert(message) {
   if (alertBox) {
     alertBox.remove();
   }
-  const newAlertBox = document.createElement("div");
-  newAlertBox.classList.add("alert-box");
-  newAlertBox.textContent = message;
-  document.body.appendChild(newAlertBox);
+  const alertBx = document.createElement("div");
+  alertBx.classList.add("alert-box");
+  alertBx.textContent = message;
+  document.body.appendChild(alertBx);
   setTimeout(function () {
-    newAlertBox.classList.add("show");
+    alertBx.classList.add("show");
     updateAnswerCounters(message);
   }, 100);
 }
