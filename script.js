@@ -51,6 +51,7 @@ function createNQB() {
   NQB.onclick = () => {
     showNQ();
     clearNQB(document.getElementById("panel"));
+    hideAlert();
   };
   return NQB;
 }
@@ -88,6 +89,16 @@ function showAlert(message) {
     alertBx.classList.add("show");
     updateAnswerCounters(message);
   }, 100);
+}
+
+function hideAlert() {
+  const alertBox = document.querySelector('.alert-box');
+  if (alertBox) {
+    alertBox.classList.remove("show");
+    setTimeout(() => {
+      alertBox.remove();
+    }, 250)
+  }
 }
 
 function updateAnswerCounters(message) {
