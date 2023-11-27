@@ -57,6 +57,7 @@ section {
 #question {
     text-align: center;
     font-family: "League Spartan", sans-serif;
+    font-weight: 600;
     font-size: 20px;
     margin: 20px;
 }
@@ -95,4 +96,11 @@ button {
 
 #nextQuestion {
     background-color: #b53f3f;
+}
+
+#answerCount {
+  display: flex;
+  justify-content: left;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 400;
 }
