@@ -1,3 +1,7 @@
+function formatQuestionText(question) {
+  const formattedQuestion = question.replace(/'/g, '"');
+  document.getElementById("question").innerHTML = formattedQuestion;
+}
 document.addEventListener("DOMContentLoaded", () => {
   fetch("questions.json")
     .then((response) => response.json())
@@ -5,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const questionElement = document.getElementById("question");
       const randomQuestionObj = data[Math.floor(Math.random() * data.length)];
       const randomQuestion = `${randomQuestionObj.category}: ${randomQuestionObj.question}`;
-      questionElement.textContent = randomQuestion;
+      formatQuestionText(randomQuestion);
       questionElement.setAttribute("answer", randomQuestionObj.answer);
     });
 });
