@@ -107,6 +107,8 @@ function formatQuestionText(question) {
   
   function skipQuestion() {
     showNQ();
+    const questionElement = document.getElementById("question");
+    showAlert(questionElement.getAttribute("answer"))
     updateSkippedCount();
   }
   
