@@ -57,7 +57,7 @@ function verifyAnswer() {
     }
   }
 
-  if (!answered && tryCount === 3 || correct === true) {
+  if ((!answered && tryCount === 3) || correct === true) {
     document.getElementById("ans").disabled = true;
     NQB = createNQB();
     NQB.style.backgroundColor = correct ? "#3FB541" : "#E65454";
@@ -107,7 +107,7 @@ let incorrectAnswers = 0;
 
 function skipQuestion() {
   showNQ();
-  updateSkippedCount()
+  updateSkippedCount();
 }
 
 function showAlert(message) {
@@ -139,7 +139,7 @@ function updateSkippedCount() {
   let skippedCount = localStorage.getItem("skipped") || 0;
   skippedCount++;
   localStorage.setItem("skipped", skippedCount);
-  updateAnswerCounters("Skipped")
+  updateAnswerCounters("Skipped");
 }
 
 function updateAnswerCounters(message) {
@@ -156,7 +156,8 @@ function updateAnswerCounters(message) {
   } else {
     userAnswers.incorrect++;
   }
-  const totalAnswerCount = userAnswers.correct + userAnswers.incorrect + userAnswers.skipped;
+  const totalAnswerCount =
+    userAnswers.correct + userAnswers.incorrect + userAnswers.skipped;
   answerCountElement.textContent = `${userAnswers.correct} correct, ${userAnswers.incorrect} wrong and ${userAnswers.skipped} skipped (${totalAnswerCount} total)`;
   localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 }
