@@ -88,12 +88,16 @@ button {
   -webkit-appearance: none;
   padding: 10px;
   border: none;
-  background-color: #3f51b5; /*#5596E6*/
   color: #eee;
   font-weight: 600;
   border-radius: 5px;
-  width: 100%;
   margin-top: 10px;
+
+}
+
+#submitBtn {
+  background-color: #3f51b5; /*#5596E6*/
+  width: 94%;
 }
 
 #nextQuestion {

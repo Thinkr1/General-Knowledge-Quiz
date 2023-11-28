@@ -101,6 +101,11 @@ function createNQB() {
 let correctAnswers = 0;
 let incorrectAnswers = 0;
 
+function skipQuestion() {
+  showNQ();
+  updateSkippedCount()
+}
+
 function showAlert(message) {
   const alertBox = document.querySelector(".alert-box");
   if (alertBox) {
@@ -126,19 +131,29 @@ function hideAlert() {
   }
 }
 
+function updateSkippedCount() {
+  let skippedCount = localStorage.getItem("skipped") || 0;
+  skippedCount++;
+  localStorage.setItem("skipped", skippedCount);
+  updateAnswerCounters("Skipped")
+}
+
 function updateAnswerCounters(message) {
   const answerCountElement = document.getElementById("answerCount");
   let userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {
     correct: 0,
     incorrect: 0,
+    skipped: 0,
   };
   if (message === "Correct!") {
     userAnswers.correct++;
+  } else if (message === "Skipped") {
+    userAnswers.skipped++;
   } else {
     userAnswers.incorrect++;
   }
-  const totalAnswerCount = userAnswers.correct + userAnswers.incorrect;
-  answerCountElement.textContent = `${userAnswers.correct} correct and ${userAnswers.incorrect} wrong (${totalAnswerCount} total)`;
+  const totalAnswerCount = userAnswers.correct + userAnswers.incorrect + userAnswers.skipped;
+  answerCountElement.textContent = `${userAnswers.correct} correct, ${userAnswers.incorrect} wrong and ${userAnswers.skipped} skipped (${totalAnswerCount} total)`;
   localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 }
 
