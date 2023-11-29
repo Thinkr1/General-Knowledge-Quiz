@@ -32,7 +32,7 @@ function verifyAnswer() {
     .toLowerCase();
 
   const normaliseAnswer = (answer) => {
-    return answer.replace(/^(a |an )/g, "").trim();
+    return answer.replace(/^(a |an| the )/g, "").trim();
   };
 
   if (normaliseAnswer(userAnswer) === normaliseAnswer(correctAnswer)) {
