@@ -97,7 +97,7 @@ button {
 }
 
 #submitBtn {
-  background-color: #5596E6; /*#5596E6*/
+  background-color: #477ec1; /*#5596E6*/
   width: 94%;
 }
 
@@ -121,4 +121,25 @@ button {
   justify-items: center;
   margin: 7px auto 0 auto;
   width: 100%;
+}
+
+.skipBtn {
+  color: #eee;
+  background-color: rgba(160, 160, 160, 0.2);
+}
+
+.skipBtn:hover {
+  background-color: rgba(207, 207, 207, 0.2);
+}
+
+.preventSelect {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.preventSelectText {
+  user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
 }
