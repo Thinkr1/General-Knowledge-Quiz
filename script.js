@@ -107,7 +107,8 @@ let incorrectAnswers = 0;
 function skipQuestion() {
   showNQ();
   const questionElement = document.getElementById("question");
-  showAlert(questionElement.getAttribute("answer"));
+  const questionAnswer = questionElement.getAttribute("answer")
+  showAlert(`Correct answer was: ${questionAnswer}`);
   updateSkippedCount();
 }
 
