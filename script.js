@@ -25,12 +25,17 @@ function verifyAnswer() {
     return;
   }
 
-  const userAnswer = document.getElementById("ans").value;
+  const userAnswer = document.getElementById("ans").value.toLowerCase();
   const currentQuestionElement = document.getElementById("question");
-  const currentQuestion = currentQuestionElement.textContent;
-  const correctAnswer = currentQuestionElement.getAttribute("answer");
+  const correctAnswer = currentQuestionElement
+    .getAttribute("answer")
+    .toLowerCase();
 
-  if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+  const normaliseAnswer = (answer) => {
+    return answer.replace(/^(a |an )/g, "").trim();
+  };
+
+  if (normaliseAnswer(userAnswer) === normaliseAnswer(correctAnswer)) {
     console.log("Correct!");
     showAlert("Correct!");
     NQB = createNQB();
@@ -107,7 +112,7 @@ let incorrectAnswers = 0;
 function skipQuestion() {
   showNQ();
   const questionElement = document.getElementById("question");
-  const questionAnswer = questionElement.getAttribute("answer")
+  const questionAnswer = questionElement.getAttribute("answer");
   showAlert(`Correct answer was: ${questionAnswer}`);
   updateSkippedCount();
 }
