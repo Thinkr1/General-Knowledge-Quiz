@@ -5,7 +5,8 @@ function formatQuestionText(question) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await fetch("questions.json");
-  const data = await response.json();
+  const compressedData = await response.text();
+  const data = JSON.parse(compressedData);
   const questionElement = document.getElementById("question");
   const randomQuestionObj = data[Math.floor(Math.random() * data.length)];
   const randomQuestion = `${randomQuestionObj.category}: ${randomQuestionObj.question}`;
